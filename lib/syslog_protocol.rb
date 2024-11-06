@@ -6,5 +6,5 @@ require 'syslog_protocol/syslogrfc5424packet'
 require 'syslog_protocol/syslogrfc5424parser'
 
 module SyslogProtocol
-  VERSION = '0.9.2'
+  VERSION = '0.10.0'
 end
