@@ -18,7 +18,7 @@ module SyslogProtocol
         unless @structured_data.empty?
           sd = format_sdata(@structured_data)
         end
-        fmt = "<%s>1 %s %s %s %s %s %s %s"
+        fmt = "<%s>1 %s %s %s %s %s %s \xEF\xBB\xBF%s"
         data = fmt % [pri, @time, @hostname,
                   @appname, format_field(@procid, 128),@msgid, sd, @content]
 
