@@ -19,7 +19,7 @@ module SyslogProtocol
           sd = format_sdata(@structured_data)
         end
         fmt = "<%s>1 %s %s %s %s %s %s \xEF\xBB\xBF%s"
-        data = fmt % [pri, @time, @hostname,
+        data = fmt % [pri, generate_timestamp, @hostname,
                   @appname, format_field(@procid, 128),@msgid, sd, @content]
 
         if string_bytesize(data) > max_size
@@ -33,7 +33,7 @@ module SyslogProtocol
       end
 
       def generate_timestamp
-        @time || Time.now.to_datetime.rfc3339(6)
+        (@time || Time.now).to_datetime.rfc3339(6)
       end
 
       def appname=(a)
